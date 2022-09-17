@@ -1,17 +1,19 @@
-import './App.css'
-import { Link } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Top } from 'containers/Top'
+import { CreateBlog } from 'routes/createBlog'
+import { Blogs } from 'routes/blogs'
+import { Blog } from 'routes/blog'
 
 function App() {
   return (
-    <div style={{ margin: 'auto', width: '1000px' }}>
-      <h1>ブログアプリ</h1>
-      <div>
-        <Link to="/create">記事作成画面</Link>
-      </div>
-      <div>
-        <Link to="/blogs">記事一覧画面</Link>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Top />} />
+        <Route path="create" element={<CreateBlog />} />
+        <Route path="blogs" element={<Blogs />} />
+        <Route path="blogs/:id" element={<Blog />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

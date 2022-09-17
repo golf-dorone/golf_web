@@ -1,0 +1,7 @@
+query Golfs {
+  golfs {
+    id
+    title
+    description
+  }
+}

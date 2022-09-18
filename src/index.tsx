@@ -9,15 +9,28 @@ import {
   createHttpLink,
 } from '@apollo/client'
 import React from 'react'
+import { setContext } from '@apollo/client/link/context'
+import { getStoredAuthToken } from './shared/utils/authToken'
 
-const link = createHttpLink({
+const httpLink = createHttpLink({
   uri: `${process.env.REACT_APP_API_DOMEIN || ''}/graphql`,
   credentials: 'include',
 })
 
+// 認証トークンをキャッシュ化
+const authLink = setContext((_, { headers }) => {
+  const token = getStoredAuthToken()
+  return {
+    headers: {
+      ...headers,
+      authorization: token || '',
+    },
+  }
+})
+
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: link,
+  link: authLink.concat(httpLink),
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { axiosInstance } from '../utils/axios.js'
+import { axiosInstance } from '../shared/utils/axios.js'
 
 type BlogList = [{ id: string; title: string }]
 

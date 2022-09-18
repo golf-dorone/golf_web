@@ -1,0 +1,9 @@
+mutation createGolf($input: CreateGolfInput!) {
+  createGolf(input: $input) {
+    golf {
+      id
+      title
+      description
+    }
+  }
+}

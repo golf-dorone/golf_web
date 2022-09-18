@@ -1,5 +1,5 @@
 import { useApolloClient } from '@apollo/client'
-import { Navigate } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { onSignOut } from '../../../shared/utils/authAction'
 import { getStoredAuthToken } from '../../../shared/utils/authToken'
 
@@ -14,7 +14,14 @@ const SignOut = () => {
     void client.clearStore()
   })
 
-  return <div>Signed Out Completed</div>
+  return (
+    <>
+      <div>Signed Out Completed</div>
+      <div>
+        <Link to="/">戻る</Link>
+      </div>
+    </>
+  )
 }
 
 export default SignOut

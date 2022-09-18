@@ -22,7 +22,7 @@ const SignUp = () => {
     })
   }
 
-  if (isAuthorized) return <Navigate to="/project" />
+  if (isAuthorized) return <Navigate to="/admin" />
 
   return (
     <>

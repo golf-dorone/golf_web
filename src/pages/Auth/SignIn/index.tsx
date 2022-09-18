@@ -14,11 +14,11 @@ const SignIn = () => {
 
   const onSubmit: SubmitHandler<AuthType> = (data) => {
     void onSignIn(data).then(() => {
-      navigate('/project')
+      navigate('/admin')
     })
   }
 
-  if (isAuthorized) return <Navigate to={'/project'} />
+  if (isAuthorized) return <Navigate to={'/admin'} />
 
   return (
     <>

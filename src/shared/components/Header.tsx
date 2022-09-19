@@ -1,25 +1,35 @@
-import React from 'react'
-// import styled from 'styled-components'
+import {
+  Box,
+  Container,
+  Stack,
+  Link,
+  // useColorModeValue,
+} from '@chakra-ui/react'
 
-const Header = () => {
+export const Header = () => {
   return (
-    <header>
-      <p>&copy; 2022 solveme Inc.</p>
-    </header>
+    <Box
+      bg="#a6b2a0"
+      color="#ffffff"
+      // bg={useColorModeValue('gray.50', 'gray.900')}
+      // color={useColorModeValue('gray.700', 'gray.200')}>
+    >
+      <Container
+        as={Stack}
+        maxW={'6xl'}
+        py={4}
+        direction={{ base: 'column', md: 'row' }}
+        spacing={4}
+        justify={{ base: 'center', md: 'space-between' }}
+        align={{ base: 'center', md: 'center' }}
+      >
+        <Link href="/">Golf x Dorone~空から見下ろすゴルフ場~</Link>
+        <Stack direction={'row'} spacing={6}>
+          {/* <Link href={'#'}>About</Link>
+          <Link href={'#'}>Blog</Link> */}
+          <Link href={'/auth/signin'}>AdminSignIn</Link>
+        </Stack>
+      </Container>
+    </Box>
   )
 }
-
-// const SFooter = styled.footer`
-//   background-color: #4b6587;
-//   color: #fff;
-//   padding: 8px 0;
-//   text-align: center;
-//   bottom: 0;
-//   width: 100%;
-//   height: 150px;
-// `
-
-// const Stext = styled.p`
-//   padding-top: 100px;
-
-export default Header

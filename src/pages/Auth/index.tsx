@@ -1,7 +1,8 @@
 import { useCurrentUserQuery } from 'graphql/generated'
-import React from 'react'
 import { Outlet } from 'react-router-dom'
-import Header from 'shared/components/Header'
+import { Header } from 'shared/components/Header'
+import { Box } from '@chakra-ui/react'
+import { Footer } from 'shared/components/Footer'
 
 const Auth = () => {
   // 認証状態確認のためにログイン済みユーザ情報を取得
@@ -11,14 +12,16 @@ const Auth = () => {
 
   // データ取得が失敗時ログインしていないユーザと判定
   const isAuthorized = !error
+  console.log('isAuthorized :>> ', isAuthorized)
 
   return (
-    <div>
+    <>
       <Header />
-      {/* SignIn, SignUp, SignOutを表示する */}
-      {/* ログイン状態を渡す */}
-      <Outlet context={[isAuthorized]} />
-    </div>
+      <Box bg="#b2a0a6">
+        <Outlet context={[isAuthorized]} />
+      </Box>
+      <Footer />
+    </>
   )
 }
 

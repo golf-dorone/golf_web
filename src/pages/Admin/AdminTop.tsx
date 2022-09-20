@@ -5,7 +5,7 @@ export const AdminTop = () => {
     <div>
       <p>Admin Top</p>
       <div>
-        <Link to="/auth/signout">サインアウト</Link>
+        <Link to="/admin/signout">サインアウト</Link>
       </div>
     </div>
   )

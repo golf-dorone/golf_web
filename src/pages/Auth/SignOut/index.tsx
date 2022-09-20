@@ -7,7 +7,8 @@ const SignOut = () => {
   const client = useApolloClient()
   const token = getStoredAuthToken()
 
-  if (!token) return <Navigate to="/auth/signin" />
+  //MEMO: トークンがなければサインインフォームへリダイレクト
+  if (!token) return <Navigate to="/admin/signin" />
 
   void onSignOut(token).then(() => {
     // sign out 成功時、取得中のクエリのキャッシュを削除する。

@@ -18,7 +18,7 @@ const SignUp = () => {
 
   const onSubmit: SubmitHandler<SignUpAuthType> = (data) => {
     void onSignUp(data).then(() => {
-      navigate('/auth/signin')
+      navigate('/admin/signin')
     })
   }
 

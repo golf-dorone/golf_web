@@ -4,16 +4,16 @@ import { AdminHeader } from '../organisms/AdminHeader'
 import { AdminContainer } from '../templates/AdminContainer'
 
 export const AdminPage = () => {
-  const { error, loading } = useCurrentUserQuery()
+  // const { error, loading } = useCurrentUserQuery()
 
-  if (loading) return <div>Loading...</div>
+  // if (loading) return <div>Loading...</div>
 
-  const isAuthorized = !error
-  console.log('isAuthorized :>> ', isAuthorized)
+  // const isAuthorized = !error
+  // console.log('isAuthorized :>> ', isAuthorized)
   return (
     <>
       <AdminHeader />
-      <Outlet context={[isAuthorized]} />
+      {/* <Outlet context={[isAuthorized]} /> */}
       <AdminContainer />
     </>
   )

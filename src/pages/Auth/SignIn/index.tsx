@@ -21,7 +21,7 @@ export const SignInForm = () => {
 
   const onSubmit: SubmitHandler<AuthType> = (data) => {
     void onSignIn(data).then(() => {
-      navigate('/admin/top')
+      navigate('/auth/top')
     })
   }
 

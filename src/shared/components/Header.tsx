@@ -27,7 +27,7 @@ export const Header = () => {
         <Stack direction={'row'} spacing={6}>
           {/* <Link href={'#'}>About</Link>
           <Link href={'#'}>Blog</Link> */}
-          <Link href={'/admin/signin'}>AdminSignIn(削除予定)</Link>
+          <Link href={'/admin'}>AdminSignIn(削除予定)</Link>
         </Stack>
       </Container>
     </Box>

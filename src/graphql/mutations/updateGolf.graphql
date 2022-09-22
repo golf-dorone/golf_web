@@ -1,0 +1,9 @@
+mutation updateGolf($input: UpdateGolfInput!) {
+  updateGolf(input: $input) {
+    golf {
+      id
+      title
+      description
+    }
+  }
+}

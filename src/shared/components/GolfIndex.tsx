@@ -1,9 +1,9 @@
 import { useGolfsQuery } from 'graphql/generated'
 import { useEffect } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Card } from './Card'
 
-export const GolfList = () => {
+export const GolfIndex = () => {
   const golfsQuery = useGolfsQuery()
 
   useEffect(() => {
@@ -13,14 +13,19 @@ export const GolfList = () => {
 
   if (golfsQuery.loading) return <p>Loading</p>
   if (golfsQuery.error) return <p>Error</p>
+
   return (
     <>
-      {/* {golfsQuery?.data?.golfs.map((key) => (
+      {golfsQuery?.data?.golfs.map((key) => (
         <>
-          <Card title={key.title} description={key.description} />
+          <Card title={key.title} description={key.description} id={key.id} />
+          <li key={key.id}>
+            <Link to={`/golfs/${key.id}`}>
+              {key.id}:{key.title}
+            </Link>
+          </li>
         </>
-      ))} */}
-      <Outlet />
+      ))}
     </>
   )
 }

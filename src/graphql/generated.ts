@@ -144,11 +144,51 @@ export type CreateGolfMutation = {
   } | null
 }
 
+export type DeleteGolfMutationVariables = Exact<{
+  input: DeleteGolfInput
+}>
+
+export type DeleteGolfMutation = {
+  __typename?: 'Mutation'
+  deleteGolf?: { __typename?: 'DeleteGolfPayload'; id: string } | null
+}
+
+export type UpdateGolfMutationVariables = Exact<{
+  input: UpdateGolfInput
+}>
+
+export type UpdateGolfMutation = {
+  __typename?: 'Mutation'
+  updateGolf?: {
+    __typename?: 'UpdateGolfPayload'
+    golf: {
+      __typename?: 'Golf'
+      id: string
+      title?: string | null
+      description?: string | null
+    }
+  } | null
+}
+
 export type CurrentUserQueryVariables = Exact<{ [key: string]: never }>
 
 export type CurrentUserQuery = {
   __typename?: 'Query'
   currentUser: { __typename?: 'User'; id: string; email: string }
+}
+
+export type GolfQueryVariables = Exact<{
+  id: Scalars['ID']
+}>
+
+export type GolfQuery = {
+  __typename?: 'Query'
+  golf: {
+    __typename?: 'Golf'
+    id: string
+    title?: string | null
+    description?: string | null
+  }
 }
 
 export type GolfsQueryVariables = Exact<{ [key: string]: never }>
@@ -216,6 +256,108 @@ export type CreateGolfMutationOptions = Apollo.BaseMutationOptions<
   CreateGolfMutation,
   CreateGolfMutationVariables
 >
+export const DeleteGolfDocument = gql`
+  mutation deleteGolf($input: DeleteGolfInput!) {
+    deleteGolf(input: $input) {
+      id
+    }
+  }
+`
+export type DeleteGolfMutationFn = Apollo.MutationFunction<
+  DeleteGolfMutation,
+  DeleteGolfMutationVariables
+>
+
+/**
+ * __useDeleteGolfMutation__
+ *
+ * To run a mutation, you first call `useDeleteGolfMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteGolfMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteGolfMutation, { data, loading, error }] = useDeleteGolfMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useDeleteGolfMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteGolfMutation,
+    DeleteGolfMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<DeleteGolfMutation, DeleteGolfMutationVariables>(
+    DeleteGolfDocument,
+    options,
+  )
+}
+export type DeleteGolfMutationHookResult = ReturnType<
+  typeof useDeleteGolfMutation
+>
+export type DeleteGolfMutationResult = Apollo.MutationResult<DeleteGolfMutation>
+export type DeleteGolfMutationOptions = Apollo.BaseMutationOptions<
+  DeleteGolfMutation,
+  DeleteGolfMutationVariables
+>
+export const UpdateGolfDocument = gql`
+  mutation updateGolf($input: UpdateGolfInput!) {
+    updateGolf(input: $input) {
+      golf {
+        id
+        title
+        description
+      }
+    }
+  }
+`
+export type UpdateGolfMutationFn = Apollo.MutationFunction<
+  UpdateGolfMutation,
+  UpdateGolfMutationVariables
+>
+
+/**
+ * __useUpdateGolfMutation__
+ *
+ * To run a mutation, you first call `useUpdateGolfMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateGolfMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateGolfMutation, { data, loading, error }] = useUpdateGolfMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateGolfMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateGolfMutation,
+    UpdateGolfMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<UpdateGolfMutation, UpdateGolfMutationVariables>(
+    UpdateGolfDocument,
+    options,
+  )
+}
+export type UpdateGolfMutationHookResult = ReturnType<
+  typeof useUpdateGolfMutation
+>
+export type UpdateGolfMutationResult = Apollo.MutationResult<UpdateGolfMutation>
+export type UpdateGolfMutationOptions = Apollo.BaseMutationOptions<
+  UpdateGolfMutation,
+  UpdateGolfMutationVariables
+>
 export const CurrentUserDocument = gql`
   query CurrentUser {
     currentUser {
@@ -272,6 +414,50 @@ export type CurrentUserQueryResult = Apollo.QueryResult<
   CurrentUserQuery,
   CurrentUserQueryVariables
 >
+export const GolfDocument = gql`
+  query Golf($id: ID!) {
+    golf(id: $id) {
+      id
+      title
+      description
+    }
+  }
+`
+
+/**
+ * __useGolfQuery__
+ *
+ * To run a query within a React component, call `useGolfQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGolfQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGolfQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGolfQuery(
+  baseOptions: Apollo.QueryHookOptions<GolfQuery, GolfQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GolfQuery, GolfQueryVariables>(GolfDocument, options)
+}
+export function useGolfLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GolfQuery, GolfQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GolfQuery, GolfQueryVariables>(
+    GolfDocument,
+    options,
+  )
+}
+export type GolfQueryHookResult = ReturnType<typeof useGolfQuery>
+export type GolfLazyQueryHookResult = ReturnType<typeof useGolfLazyQuery>
+export type GolfQueryResult = Apollo.QueryResult<GolfQuery, GolfQueryVariables>
 export const GolfsDocument = gql`
   query Golfs {
     golfs {

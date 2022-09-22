@@ -47,7 +47,7 @@ export const Footer = () => {
     <Box
       bg="#a6b2a0"
       color="#e7e8ec"
-      position="fixed"
+      // position="fixed"
       bottom="0"
       width="100%"
       //   minHeight="calc(100vh - 50px)"

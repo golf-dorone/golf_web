@@ -1,0 +1,7 @@
+query Golf($id: ID!) {
+  golf(id: $id) {
+    id
+    title
+    description
+  }
+}

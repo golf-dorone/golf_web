@@ -10,7 +10,7 @@ export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
   return (
     <>
       <Header />
-      <Box bg="#a6b2a0">{children}</Box>
+      <Box>{children}</Box>
       <Footer />
     </>
   )

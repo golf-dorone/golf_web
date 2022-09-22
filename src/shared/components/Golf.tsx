@@ -2,6 +2,7 @@ import { useGolfQuery } from 'graphql/generated'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { GolfDetailCard } from './GolfDetailCard'
+import { UpdateGolfForm } from './UpdateGolfForm'
 
 export const Golf = () => {
   const { golfId } = useParams()
@@ -31,6 +32,7 @@ export const Golf = () => {
         <div>{data?.golf.description}</div>
       </div>
       <GolfDetailCard golf={data?.golf} />
+      <UpdateGolfForm golf={data?.golf} />
     </>
   )
 }

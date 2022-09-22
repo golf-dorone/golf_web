@@ -15,13 +15,17 @@ import {
   VisuallyHidden,
   List,
   ListItem,
+  Input,
 } from '@chakra-ui/react'
+import { useDeleteGolfMutation } from 'graphql/generated'
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
 import { MdLocalShipping } from 'react-icons/md'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export const GolfDetailCard = (props: any) => {
   const { golf } = props
+  const [deleteGolf] = useDeleteGolfMutation({ refetchQueries: ['golf'] })
+  const navigate = useNavigate()
   return (
     <Container maxW={'7xl'}>
       {/* <SimpleGrid
@@ -52,6 +56,13 @@ export const GolfDetailCard = (props: any) => {
           >
             {golf.title}
           </Heading>
+          <Input
+            id="params.title"
+            placeholder="title"
+            width="auto"
+            size="md"
+            defaultValue={golf.title}
+          />
           <Text
             color={useColorModeValue('gray.900', 'gray.400')}
             fontWeight={300}
@@ -59,7 +70,32 @@ export const GolfDetailCard = (props: any) => {
           >
             {golf.description}
           </Text>
+          <Input
+            id="params.description"
+            placeholder="description"
+            width="auto"
+            size="md"
+            defaultValue={golf.description}
+          />
         </Box>
+        <Button
+          onClick={() =>
+            deleteGolf({
+              variables: {
+                input: {
+                  id: golf.id,
+                },
+              },
+            }).then(() => {
+              navigate('/auth/golfs')
+            })
+          }
+        >
+          削除する
+        </Button>
+        <Button>
+          <Link to="/"></Link>
+        </Button>
 
         {/* <Stack
           spacing={{ base: 4, sm: 6 }}

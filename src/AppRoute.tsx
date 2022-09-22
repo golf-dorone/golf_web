@@ -11,6 +11,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Golf } from 'shared/components/Golf'
 import { GolfIndex } from 'shared/components/GolfIndex'
 import { GolfList } from 'shared/components/GolfList'
+import { UpdateGolfForm } from 'shared/components/UpdateGolfForm'
 
 export const AppRoute = () => {
   return (
@@ -20,6 +21,7 @@ export const AppRoute = () => {
         <Route path="/golfs" element={<GolfList />}>
           <Route index element={<GolfIndex />} />
           <Route path=":golfId" element={<Golf />} />
+          <Route path=":golfId/update" element={<UpdateGolfForm />} />
         </Route>
         {/* <Route path="create" element={<CreateBlog />} />
           <Route path="blogs" element={<Blogs />} />

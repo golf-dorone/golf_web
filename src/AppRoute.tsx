@@ -1,43 +1,39 @@
-import { CreateGolfForm } from 'containers/admin/organisms/CreateGolfForm'
-import { AdminPage } from 'containers/admin/pages'
-import { AdminContainer } from 'containers/admin/templates/AdminContainer'
-import { CustomerPage } from 'containers/customer/pages'
-import { AdminTop } from 'pages/Admin/AdminTop'
+import { CreateGolfForm } from 'shared/components/CreateGolfForm'
 import Auth from 'pages/Auth'
+import { AdminTopPage } from 'pages/Auth/Admin'
 import { SignInForm } from 'pages/Auth/SignIn'
 import SignOut from 'pages/Auth/SignOut'
-import SignUp from 'pages/Auth/SignUp'
+import { SignUp } from 'pages/Auth/SignUp'
+import { CustomerTopPage } from 'pages/Customer'
+import { CustomerTopContainer } from 'pages/Customer/Top'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-import { Golf } from 'shared/components/Golf'
+import { GolfData } from 'shared/components/GolfData'
 import { GolfIndex } from 'shared/components/GolfIndex'
-import { GolfList } from 'shared/components/GolfList'
-import { UpdateGolfForm } from 'shared/components/UpdateGolfForm'
 
 export const AppRoute = () => {
   return (
     <BrowserRouter>
       <Routes>
         {/* <Route index element={<CustomerPage />} /> */}
-        <Route path="/golfs" element={<GolfList />}>
-          <Route index element={<GolfIndex />} />
-          <Route path=":golfId" element={<Golf />} />
-          <Route path=":golfId/update" element={<UpdateGolfForm />} />
+        <Route path="/" element={<Navigate to="/customer" />} />
+        <Route path="/customer" element={<CustomerTopPage />}>
+          <Route index element={<CustomerTopContainer />} />
+          <Route path="golfs/:golfId" element={<GolfData isAdmin={false} />} />
+          {/* <Route path=":golfId/update" element={<UpdateGolfForm />} /> */}
         </Route>
-        {/* <Route path="create" element={<CreateBlog />} />
-          <Route path="blogs" element={<Blogs />} />
-          <Route path="blogs/:id" element={<Blog />} /> */}
-        {/* <Route path="admin" element={<Auth />}> */}
+      </Routes>
+      <Routes>
         <Route path="auth" element={<Auth />}>
           <Route index element={<Navigate to="signin" />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="signin" element={<SignInForm />} />
+          <Route path="admin" element={<AdminTopPage />} />
           <Route path="signout" element={<SignOut />} />
-          <Route path="top" element={<AdminTop />} />
-          <Route path="golfs" element={<GolfList />}>
-            <Route index element={<GolfIndex />} />
-            <Route path=":golfId" element={<Golf />} />
-          </Route>
           <Route path="create" element={<CreateGolfForm />} />
+          <Route path="golfs" element={<GolfIndex />}>
+            {/* <Route path="create" element={<CreateGolfForm />} /> */}
+          </Route>
+          <Route path="golfs/:golfId" element={<GolfData isAdmin={true} />} />
         </Route>
       </Routes>
     </BrowserRouter>

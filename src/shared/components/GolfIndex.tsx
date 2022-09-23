@@ -1,9 +1,11 @@
 import { useGolfsQuery } from 'graphql/generated'
+import React from 'react'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Card } from './Card'
 
-export const GolfIndex = () => {
+export const GolfIndex = (props: any) => {
+  const { isAdmin } = props
   const golfsQuery = useGolfsQuery()
 
   useEffect(() => {
@@ -17,14 +19,16 @@ export const GolfIndex = () => {
   return (
     <>
       {golfsQuery?.data?.golfs.map((key) => (
-        <>
-          <Card title={key.title} description={key.description} id={key.id} />
-          <li key={key.id}>
-            <Link to={`/golfs/${key.id}`}>
-              {key.id}:{key.title}
-            </Link>
-          </li>
-        </>
+        <React.Fragment key={key.id}>
+          {key.title ? (
+            <Card
+              title={key.title}
+              description={key.description}
+              id={key.id}
+              isAdmin={isAdmin}
+            />
+          ) : undefined}
+        </React.Fragment>
       ))}
     </>
   )

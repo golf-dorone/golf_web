@@ -5,14 +5,13 @@ import {
   Heading,
   Text,
   Stack,
-  // Avatar,
   useColorModeValue,
   //   Container,
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
 export const Card = (props: any) => {
-  const { title, description, id } = props
+  const { title, description, id, isAdmin } = props
   return (
     <Center py={6}>
       <Box
@@ -48,26 +47,23 @@ export const Card = (props: any) => {
             fontSize={'sm'}
             letterSpacing={1.1}
           >
-            〇〇ゴルフ場
+            テストゴルフ場
           </Text>
           <Heading
             color={useColorModeValue('gray.700', 'white')}
             fontSize={'2xl'}
             fontFamily={'body'}
           >
-            <Link to={`/golfs/${id}`}>{title}</Link>
+            {isAdmin ? (
+              <Link to={`/auth/golfs/${id}`}>{title}</Link>
+            ) : (
+              // <Link to={`/auth/golfs/${id}`}>{title}</Link>
+              <Link to={`/customer/golfs/${id}`}>{title}</Link>
+            )}
+            {/* <Link to={`/customer/golfs/${id}`}>{title}</Link> */}
           </Heading>
           <Text color={'gray.500'}>{description}</Text>
         </Stack>
-        {/* <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
-          <Avatar
-            src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
-          />
-          <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-            <Text fontWeight={600}>Achim Rolle</Text>
-            <Text color={'gray.500'}>Feb 08, 2021 · 6min read</Text>
-          </Stack>
-        </Stack> */}
       </Box>
     </Center>
   )

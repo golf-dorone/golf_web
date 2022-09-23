@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom'
 import { GolfDetailCard } from './GolfDetailCard'
 import { UpdateGolfForm } from './UpdateGolfForm'
 
-export const Golf = () => {
+export const GolfData = (props: any) => {
+  const { isAdmin } = props
   const { golfId } = useParams()
   if (!golfId) return null
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -25,14 +26,11 @@ export const Golf = () => {
 
   return (
     <>
-      <h2>Single Post</h2>
-      <div>
-        <div>{data?.golf.id}</div>
-        <div>{data?.golf.title}</div>
-        <div>{data?.golf.description}</div>
-      </div>
-      <GolfDetailCard golf={data?.golf} />
-      <UpdateGolfForm golf={data?.golf} />
+      {isAdmin ? (
+        <UpdateGolfForm golf={data?.golf} />
+      ) : (
+        <GolfDetailCard golf={data?.golf} />
+      )}
     </>
   )
 }

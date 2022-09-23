@@ -8,7 +8,7 @@ const SignOut = () => {
   const token = getStoredAuthToken()
 
   //MEMO: トークンがなければサインインフォームへリダイレクト
-  if (!token) return <Navigate to="/admin/signin" />
+  if (!token) return <Navigate to="/auth/signin" />
 
   void onSignOut(token).then(() => {
     // sign out 成功時、取得中のクエリのキャッシュを削除する。

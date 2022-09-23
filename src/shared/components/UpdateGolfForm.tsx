@@ -3,22 +3,28 @@ import {
   Container,
   Stack,
   Image,
-  Button,
-  useColorModeValue,
   Input,
+  FormControl,
+  FormLabel,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
 } from '@chakra-ui/react'
 import {
   UpdateGolfInput,
-  // useDeleteGolfMutation,
+  useDeleteGolfMutation,
   useUpdateGolfMutation,
 } from 'graphql/generated'
-import { Link, useNavigate } from 'react-router-dom'
+import { ChevronRightIcon } from '@chakra-ui/icons'
+import { useNavigate } from 'react-router-dom'
 import { useForm, SubmitHandler } from 'react-hook-form'
+import { SharedButton } from './SharedButton'
+import { FaTrashAlt, FaEdit, FaChevronLeft } from 'react-icons/fa'
 
 export const UpdateGolfForm = (props: any) => {
   const { golf } = props
   const [updateGolf] = useUpdateGolfMutation({ refetchQueries: ['golf'] })
-  // const [deleteGolf] = useDeleteGolfMutation({ refetchQueries: ['golf'] })
+  const [deleteGolf] = useDeleteGolfMutation({ refetchQueries: ['golf'] })
   const navigate = useNavigate()
   const {
     register,
@@ -38,83 +44,115 @@ export const UpdateGolfForm = (props: any) => {
         },
       },
     }).then(() => {
-      navigate(`/golfs/${golf.id}`)
+      navigate('/auth/golfs')
+      // navigate(`auth/golfs/${golf.id}`)
     })
   }
 
   return (
     <>
+      <Breadcrumb
+        spacing="8px"
+        separator={<ChevronRightIcon color="gray.500" />}
+      >
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/auth/admin" fontSize={'12px'}>
+            管理者ページトップ
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/auth/golfs" fontSize={'12px'}>
+            ゴルフ場紹介一覧
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+      </Breadcrumb>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Container maxW={'7xl'}>
           <Image
             rounded={'md'}
             alt={'product image'}
             src={
-              'https://images.unsplash.com/photo-1596516109370-29001ec8ec36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODE1MDl8MHwxfGFsbHx8fHx8fHx8fDE2Mzg5MzY2MzE&ixlib=rb-1.2.1&q=80&w=1080'
+              'https://images.unsplash.com/photo-1529514034604-3cf028e773ed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1431&q=80'
             }
             fit={'cover'}
             align={'center'}
             w={'100%'}
             h={{ base: '100%', sm: '400px', lg: '500px' }}
           />
-          {/* </Flex> */}
           <Stack spacing={{ base: 6, md: 10 }}>
             <Box as={'header'}>
-              <Input
-                id="params.title"
-                placeholder="title"
-                width="auto"
-                size="md"
-                defaultValue={golf.title}
-                {...register('params.title', {
-                  // required: validation.required,
-                })}
-              />
-              <Input
-                id="params.description"
-                // name="params.description"
-                placeholder="description"
-                width="auto"
-                size="md"
-                defaultValue={golf.description}
-                {...register('params.description', {
-                  // required: validation.required,
-                })}
-              />
+              <FormControl textAlign="center">
+                <FormLabel htmlFor="title" textAlign="center">
+                  　タイトル
+                </FormLabel>
+                <Input
+                  id="params.title"
+                  placeholder="title"
+                  width="auto"
+                  size="md"
+                  defaultValue={golf.title}
+                  {...register('params.title', {
+                    // required: validation.required,
+                  })}
+                />
+              </FormControl>
+              <FormControl textAlign="center">
+                <FormLabel htmlFor="password" textAlign="center">
+                  紹介内容
+                </FormLabel>
+                <Input
+                  id="params.description"
+                  // name="params.description"
+                  placeholder="description"
+                  width="50%"
+                  height="400px"
+                  size="md"
+                  defaultValue={golf.description}
+                  {...register('params.description', {
+                    // required: validation.required,
+                  })}
+                />
+              </FormControl>
             </Box>
 
-            <Button
-              mt={4}
-              colorScheme="gray"
-              isLoading={isSubmitting}
-              type="submit"
-            >
-              ゴルフ場紹介を更新する
-            </Button>
+            <Stack spacing={4} direction="row-reverse" textAlign={'center'}>
+              <SharedButton
+                icon={<FaEdit />}
+                label={'更新する'}
+                variant={'outline'}
+                isLeftIcon={true}
+                type="submit"
+                isLoading={isSubmitting}
+              />
 
-            <Button
-              rounded={'none'}
-              w={'full'}
-              mt={8}
-              size={'lg'}
-              py={'7'}
-              // bg={useColorModeValue('gray.900', 'gray.50')}
-              color={useColorModeValue('white', 'gray.900')}
-              textTransform={'uppercase'}
-              _hover={{
-                transform: 'translateY(2px)',
-                boxShadow: 'lg',
-              }}
-            >
-              <Link to="/golfs">一覧ページへ戻る</Link>
-            </Button>
+              <SharedButton
+                icon={<FaTrashAlt />}
+                label={'削除する'}
+                variant={'outline'}
+                isLeftIcon={true}
+                onClick={() =>
+                  deleteGolf({
+                    variables: {
+                      input: {
+                        id: golf.id,
+                      },
+                    },
+                  }).then(() => {
+                    navigate('/auth/golfs')
+                  })
+                }
+              />
 
-            {/* <Stack direction="row" alignItems="center" justifyContent={'center'}>
-            <MdLocalShipping />
-            <Text>2-3 business days delivery</Text>
-          </Stack> */}
+              <SharedButton
+                icon={<FaChevronLeft />}
+                label={'一覧ページへ戻る'}
+                variant={'outline'}
+                isLeftIcon={true}
+                onClick={() => navigate('/auth/golfs')}
+              />
+            </Stack>
           </Stack>
-          {/* </SimpleGrid> */}
         </Container>
       </form>
     </>

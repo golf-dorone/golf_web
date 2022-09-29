@@ -30,9 +30,7 @@ export const AppRoute = () => {
           <Route path="admin" element={<AdminTopPage />} />
           <Route path="signout" element={<SignOut />} />
           <Route path="create" element={<CreateGolfForm />} />
-          <Route path="golfs" element={<GolfIndex />}>
-            {/* <Route path="create" element={<CreateGolfForm />} /> */}
-          </Route>
+          <Route path="golfs" element={<GolfIndex isAdmin={true} />} />
           <Route path="golfs/:golfId" element={<GolfData isAdmin={true} />} />
         </Route>
       </Routes>

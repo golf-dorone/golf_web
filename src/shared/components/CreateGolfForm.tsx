@@ -34,7 +34,7 @@ export const CreateGolfForm = () => {
 
   const onSubmit: SubmitHandler<CreateGolfInput> = (params) => {
     void createGolf({ variables: { input: params } }).then(() => {
-      navigate('/admin/signin')
+      navigate('/auth/admin')
     })
   }
 

@@ -2,6 +2,7 @@ import {
   Image,
   Box,
   Center,
+  Flex,
   Heading,
   Text,
   Stack,
@@ -33,9 +34,9 @@ export const Card = (props: any) => {
         >
           <Image
             src={
-              'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+              'https://pbs.twimg.com/media/FdoGzhsagAAfzN6?format=jpg&name=large'
             }
-            boxSize="150px"
+            boxSize="200px"
             objectFit="cover"
           />
         </Box>
@@ -57,12 +58,10 @@ export const Card = (props: any) => {
             {isAdmin ? (
               <Link to={`/auth/golfs/${id}`}>{title}</Link>
             ) : (
-              // <Link to={`/auth/golfs/${id}`}>{title}</Link>
               <Link to={`/customer/golfs/${id}`}>{title}</Link>
             )}
-            {/* <Link to={`/customer/golfs/${id}`}>{title}</Link> */}
           </Heading>
-          <Text color={'gray.500'}>{description}</Text>
+          {/* <Text color={'gray.500'}>{description}</Text> */}
         </Stack>
       </Box>
     </Center>

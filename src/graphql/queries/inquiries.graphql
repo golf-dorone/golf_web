@@ -1,0 +1,9 @@
+query Inquiries {
+  inquiries {
+    id
+    title
+    description
+    name
+    contact
+  }
+}

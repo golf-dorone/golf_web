@@ -31,12 +31,12 @@ export const CustomerFooter = () => {
             {/* <SocialButton label={'YouTube'} href={'#'}>
             <FaYoutube />
           </SocialButton> */}
-            <SocialButton
+            {/* <SocialButton
               label={'Instagram'}
               href={'https://twitter.com/megGOLF13'}
             >
               <FaInstagram />
-            </SocialButton>
+            </SocialButton> */}
           </Stack>
           <Button
             as={'a'}

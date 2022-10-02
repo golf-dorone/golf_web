@@ -257,7 +257,7 @@ const NAV_ITEMS: Array<NavItem> = [
     ],
   },
   {
-    label: 'お問い合わせ(作成中)',
-    href: '#',
+    label: 'お問い合わせ(確認)',
+    href: '/auth/inquiries',
   },
 ]

@@ -10,7 +10,6 @@ import {
 } from '@chakra-ui/react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import Slider from 'react-slick'
-import { CustomerMenuBar } from './CustomerMenuBar'
 
 // Settings for the slider
 const settings = {
@@ -148,7 +147,6 @@ export const CustomerHeader = () => {
           ))}
         </Slider>
       </Box>
-      <CustomerMenuBar />
     </>
   )
 }

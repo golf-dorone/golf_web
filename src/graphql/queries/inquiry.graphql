@@ -1,0 +1,9 @@
+query Inquiry($id: ID!) {
+  inquiry(id: $id) {
+    id
+    title
+    description
+    name
+    contact
+  }
+}

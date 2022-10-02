@@ -9,6 +9,8 @@ import { CustomerTopContainer } from 'pages/Customer/Top'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { GolfData } from 'shared/components/GolfData'
 import { GolfIndex } from 'shared/components/GolfIndex'
+import { Inquiry } from 'pages/Auth/Inquiry'
+import { CustomerInquiryContainer } from 'pages/Customer/Inquiry'
 
 export const AppRoute = () => {
   return (
@@ -19,7 +21,7 @@ export const AppRoute = () => {
         <Route path="/customer" element={<CustomerTopPage />}>
           <Route index element={<CustomerTopContainer />} />
           <Route path="golfs/:golfId" element={<GolfData isAdmin={false} />} />
-          {/* <Route path=":golfId/update" element={<UpdateGolfForm />} /> */}
+          <Route path="inquiry_form" element={<CustomerInquiryContainer />} />
         </Route>
       </Routes>
       <Routes>
@@ -32,6 +34,7 @@ export const AppRoute = () => {
           <Route path="create" element={<CreateGolfForm />} />
           <Route path="golfs" element={<GolfIndex isAdmin={true} />} />
           <Route path="golfs/:golfId" element={<GolfData isAdmin={true} />} />
+          <Route path="inquiries" element={<Inquiry />} />
         </Route>
       </Routes>
     </BrowserRouter>

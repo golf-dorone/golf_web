@@ -1,0 +1,11 @@
+mutation createInquiry($input: CreateInquiryInput!) {
+  createInquiry(input: $input) {
+    inquiry {
+      id
+      title
+      description
+      name
+      contact
+    }
+  }
+}

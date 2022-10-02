@@ -58,19 +58,19 @@ export const CustomerMenuBar = () => {
           </Flex>
         </Flex>
 
-        <Stack direction={'row'} spacing={4}>
+        <Stack direction={'row'} spacing={4} marginRight="100px">
           <SocialButton
             label={'Twitter'}
             href={'https://twitter.com/megGOLF13'}
           >
             <FaTwitter />
           </SocialButton>
-          <SocialButton
+          {/* <SocialButton
             label={'Instagram'}
             href={'https://twitter.com/megGOLF13'}
           >
             <FaInstagram />
-          </SocialButton>
+          </SocialButton> */}
         </Stack>
       </Flex>
 
@@ -255,7 +255,7 @@ const NAV_ITEMS: Array<NavItem> = [
     ],
   },
   {
-    label: 'お問い合わせ(作成中)',
-    href: '#',
+    label: 'お問い合わせ',
+    href: '/customer/inquiry_form',
   },
 ]

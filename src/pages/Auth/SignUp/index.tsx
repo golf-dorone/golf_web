@@ -16,14 +16,15 @@ import {
   Link,
   Text,
 } from '@chakra-ui/react'
-import { FaHandPointRight } from 'react-icons/fa'
+import { FaHandPointRight, FaDove } from 'react-icons/fa'
+import { SharedButton } from 'shared/components/SharedButton'
 
 export const SignUp = () => {
   const navigate = useNavigate()
   const [isAuthorized] = useOutletContext<[boolean]>()
   const {
     register,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     handleSubmit,
     watch,
   } = useForm<SignUpAuthType>({ criteriaMode: 'all' })
@@ -44,7 +45,8 @@ export const SignUp = () => {
           minH={'100vh'}
           align={'center'}
           justify={'center'}
-          // bg={useColorModeValue('gray.50', 'gray.800')}
+          // eslint-disable-next-line react-hooks/rules-of-hooks
+          bg={useColorModeValue('gray.50', 'gray.800')}
         >
           <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
             <Stack align={'center'}>
@@ -136,14 +138,14 @@ export const SignUp = () => {
                     </Link>
                   </Stack>
                   <Box textAlign="center">
-                    <Button
-                      mt={4}
-                      colorScheme="gray"
-                      // isLoading={isSubmitting}
+                    <SharedButton
+                      icon={<FaDove />}
+                      label={'新規登録'}
+                      variant={'outline'}
+                      isLeftIcon={true}
                       type="submit"
-                    >
-                      Sign Up
-                    </Button>
+                      isLoading={isSubmitting}
+                    />
                   </Box>
                 </Stack>
               </Stack>

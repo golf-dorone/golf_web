@@ -255,7 +255,19 @@ const NAV_ITEMS: Array<NavItem> = [
     ],
   },
   {
+    label: 'アーカイブ(ドローン映像紹介)',
+    href: '/customer/archive',
+  },
+  {
+    label: 'その他仕事内容紹介',
+    href: '/customer/otherworks',
+  },
+  {
     label: 'お問い合わせ',
     href: '/customer/inquiry_form',
+  },
+  {
+    label: 'よくあるご質問',
+    href: '/customer/qanda',
   },
 ]

@@ -1,12 +1,12 @@
 import { AdminMenuBar } from './AdminMenuBar'
 import { Text } from '@chakra-ui/react'
 import { FaGolfBall } from 'react-icons/fa'
-import { CustomerTopHeader } from 'pages/Customer/Top/CustomerTopHeader'
+import { HeaderLine } from 'shared/components/HeaderLine'
 
 export const AdminTopPage = () => {
   return (
     <div>
-      <CustomerTopHeader />
+      <HeaderLine />
       <Text as="samp" color={'#a0a6b2'} margin="10px" fontSize={'30px'}>
         Golf x Dorone 管理者ページ{''}
         <FaGolfBall />

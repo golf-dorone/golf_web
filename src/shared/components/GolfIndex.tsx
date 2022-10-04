@@ -1,10 +1,9 @@
 import { useGolfsQuery } from 'graphql/generated'
 import React from 'react'
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { Card } from './Card'
 import { Box } from '@chakra-ui/react'
 import { GolfList } from './GolfList'
+import { AdminMenuBar } from 'pages/Auth/Admin/AdminMenuBar'
 
 export const GolfIndex = (props: any) => {
   const { isAdmin } = props
@@ -19,23 +18,11 @@ export const GolfIndex = (props: any) => {
   if (golfsQuery.error) return <p>Error</p>
 
   return (
-    <Box
-      width={'80%'}
-      display={'flex'}
-      justifyContent={'space-around'}
-      // flexWrap={'wrap'}
-    >
+    <>
+      {isAdmin ? <AdminMenuBar /> : <></>}
       <Box alignItems={'stretch'}>
         {golfsQuery?.data?.golfs.map((key) => (
           <React.Fragment key={key.id}>
-            {/* {key.title ? (
-              <Card
-                title={key.title}
-                description={key.description}
-                id={key.id}
-                isAdmin={isAdmin}
-              />
-            ) : undefined} */}
             {key.title ? (
               <GolfList
                 title={key.title}
@@ -47,6 +34,6 @@ export const GolfIndex = (props: any) => {
           </React.Fragment>
         ))}
       </Box>
-    </Box>
+    </>
   )
 }

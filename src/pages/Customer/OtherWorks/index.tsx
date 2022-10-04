@@ -1,14 +1,17 @@
 import { HeaderLine } from 'shared/components/HeaderLine'
 import { CustomerFooter } from '../Top/CustomerFooter'
 import { CustomerMenuBar } from '../Top/CustomerMenuBar'
-import { InquiryForm } from './InquiryForm'
+import { Container, Heading } from '@chakra-ui/react'
+import { OtherWorks } from './OtherWorks'
 
-export const CustomerInquiryContainer = () => {
+export const CustomerOtherWorksContainer = () => {
   return (
     <>
       <HeaderLine />
       <CustomerMenuBar />
-      <InquiryForm />
+      <Container maxW="container.xl">
+        <OtherWorks />
+      </Container>
       <CustomerFooter />
     </>
   )

@@ -11,6 +11,9 @@ import { GolfData } from 'shared/components/GolfData'
 import { GolfIndex } from 'shared/components/GolfIndex'
 import { Inquiry } from 'pages/Auth/Inquiry'
 import { CustomerInquiryContainer } from 'pages/Customer/Inquiry'
+import { CustomerArchiveContainer } from 'pages/Customer/Archive'
+import { CustomerQAContainer } from 'pages/Customer/Q&A'
+import { CustomerOtherWorksContainer } from 'pages/Customer/OtherWorks'
 
 export const AppRoute = () => {
   return (
@@ -22,6 +25,9 @@ export const AppRoute = () => {
           <Route index element={<CustomerTopContainer />} />
           <Route path="golfs/:golfId" element={<GolfData isAdmin={false} />} />
           <Route path="inquiry_form" element={<CustomerInquiryContainer />} />
+          <Route path="archive" element={<CustomerArchiveContainer />} />
+          <Route path="qanda" element={<CustomerQAContainer />} />
+          <Route path="otherworks" element={<CustomerOtherWorksContainer />} />
         </Route>
       </Routes>
       <Routes>

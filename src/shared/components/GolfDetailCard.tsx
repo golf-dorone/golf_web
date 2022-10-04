@@ -47,38 +47,23 @@ export const GolfDetailCard = (props: any) => {
         w={'100%'}
         h={{ base: '100%', sm: '400px', lg: '500px' }}
       />
-      {/* </Flex> */}
       <Stack spacing={{ base: 6, md: 10 }}>
         <Box as={'header'}>
           <Heading
             lineHeight={1.1}
             fontWeight={500}
-            fontSize={{ base: 'xl', sm: '2xl', lg: '3xl' }}
+            fontSize={{ base: 'xl', sm: 'xl', lg: 'xl' }}
             textAlign={'center'}
           >
             {golf.title}
           </Heading>
-          {/* <Input
-            id="params.title"
-            placeholder="title"
-            width="auto"
-            size="md"
-            defaultValue={golf.title}
-          /> */}
           <Text
             color={useColorModeValue('gray.900', 'gray.400')}
             fontWeight={300}
-            fontSize={'2xl'}
+            fontSize={'md'}
           >
             {golf.description}
           </Text>
-          {/* <Input
-            id="params.description"
-            placeholder="description"
-            width="auto"
-            size="md"
-            defaultValue={golf.description}
-          /> */}
         </Box>
 
         <Stack spacing={4} direction="row" textAlign={'center'}>

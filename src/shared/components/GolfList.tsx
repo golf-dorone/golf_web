@@ -2,18 +2,13 @@ import React from 'react'
 import {
   Box,
   Heading,
-  //   Link,
   Image,
   Text,
-  Divider,
   HStack,
   Tag,
-  Wrap,
-  WrapItem,
   SpaceProps,
   useColorModeValue,
   Container,
-  VStack,
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
@@ -37,7 +32,7 @@ const BlogTags: React.FC<IBlogTags> = (props) => {
 }
 
 export const GolfList = (props: any) => {
-  const { title, description, id, isAdmin } = props
+  const { title, description, id, isAdmin, isSample } = props
   return (
     <Container maxW={'7xl'} p="12">
       <Box
@@ -71,7 +66,6 @@ export const GolfList = (props: any) => {
             />
             {/* </Link> */}
           </Box>
-          {/* <Box zIndex="1" width="100%" position="absolute" height="100%"> */}
           <Box
             bgGradient={useColorModeValue(
               'radial(orange.600 1px, transparent 1px)',
@@ -82,7 +76,6 @@ export const GolfList = (props: any) => {
             height="100%"
           />
         </Box>
-        {/* </Box> */}
         <Box
           display="flex"
           flex="1"
@@ -92,18 +85,22 @@ export const GolfList = (props: any) => {
         >
           <BlogTags tags={['六本木ゴルフクラブ']} />
           <Heading
-            // marginTop="1"
             color={useColorModeValue('gray.700', 'white')}
             fontSize={'2xl'}
             fontFamily={'body'}
           >
-            {/* <Link textDecoration="none" _hover={{ textDecoration: 'none' }}> */}
             {isAdmin ? (
               <Link to={`/auth/golfs/${id}`}>{title}</Link>
             ) : (
               <Link to={`/customer/golfs/${id}`}>{title}</Link>
             )}
-            {/* </Link> */}
+            {isSample ? (
+              <Link to={`/customer/golfs/sample`}>
+                初心者必見！ラウンド戦略でスコアアップ
+              </Link>
+            ) : (
+              <></>
+            )}
           </Heading>
           <Text
             as="p"

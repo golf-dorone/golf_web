@@ -14,6 +14,7 @@ import { CustomerInquiryContainer } from 'pages/Customer/Inquiry'
 import { CustomerArchiveContainer } from 'pages/Customer/Archive'
 import { CustomerQAContainer } from 'pages/Customer/Q&A'
 import { CustomerOtherWorksContainer } from 'pages/Customer/OtherWorks'
+import { GolfCardSample } from 'pages/Customer/Top/GolfCardSample'
 
 export const AppRoute = () => {
   return (
@@ -28,6 +29,7 @@ export const AppRoute = () => {
           <Route path="archive" element={<CustomerArchiveContainer />} />
           <Route path="qanda" element={<CustomerQAContainer />} />
           <Route path="otherworks" element={<CustomerOtherWorksContainer />} />
+          <Route path="golfs/sample" element={<GolfCardSample />} />
         </Route>
       </Routes>
       <Routes>
